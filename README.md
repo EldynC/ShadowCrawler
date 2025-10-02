@@ -6,12 +6,11 @@
 
 > **The Ultimate Video Library Manager for Gamers!** 🚀
 
-Transform your chaotic ShadowPlay recordings into an organized, searchable video library! ShadowCrawler is designed specifically for **Windows gamers** who use **NVIDIA ShadowPlay** to capture epic moments with friends.
+Transform your chaotic ShadowPlay recordings into an organized, video library! ShadowCrawler is designed specifically for **Windows gamers** who use **NVIDIA ShadowPlay** to capture moments with friends.
 
 ## ✨ What is ShadowCrawler?
 
 ShadowCrawler automatically indexes and organizes your gaming videos, making it easy to:
-- 🔍 **Search** through hundreds of recordings instantly
 - 📁 **Organize** videos by game, date, or custom folders  
 - 🎬 **Preview** videos with thumbnails before playing
 - ⚡ **Fast playback** with optimized video loading
@@ -57,7 +56,6 @@ choco install ffmpeg
 # Install Rust (if not already installed)
 # Download from: https://rustup.rs/
 
-# Add Windows GNU target for cross-compilation
 ```
 
 ### 2. Clone and Setup
@@ -71,7 +69,7 @@ pnpm install
 ### 3. Build the Application
 
 ```bash
-pnpm tauri build --target x86_64-pc-windows-gnu
+pnpm tauri build 
 ```
 
 ### 4. First Run
@@ -82,7 +80,7 @@ pnpm tauri build --target x86_64-pc-windows-gnu
 
 ## ⚡ Performance Features
 
-ShadowCrawler uses **advanced multi-threading** to process your video library at lightning speed:
+ShadowCrawler uses **multi-threading** to process your video library at lightning speed:
 
 - 🧵 **Multi-threaded indexing** - Processes multiple videos simultaneously
 - ⚡ **Parallel metadata extraction** - Analyzes video properties concurrently  
@@ -98,40 +96,33 @@ ShadowCrawler stores its video database at:
 %APPDATA%\shadowcrawler\videos.db
 ```
 
-This SQLite database contains:
-- 📊 Video metadata (resolution, FPS, codec, duration)
-- 🗂️ Folder organization
-- 🔍 Search indexes
-- 🖼️ Thumbnail references
+The database contains:
+- Video metadata (resolution, FPS, codec, duration)
+- Folder organization data
+- Search indexes
+- Thumbnail references
 
-## 🛠️ Development
+## Technology Stack
 
-Built with modern web technologies:
-- ⚡ **Tauri** - Rust-powered desktop app framework
-- ⚛️ **React 19** - Modern UI components
-- 🎨 **Tailwind CSS** - Beautiful styling
-- 📦 **Zustand** - State management
-- 🗄️ **SQLite** - Local database storage
+- **Tauri** - Desktop application framework
+- **React 19** - Frontend framework
+- **Tailwind CSS** - Styling
+- **Zustand** - State management
+- **SQLite** - Database storage
 
-## 🎮 Features
+## Features
 
-- 🔍 **Smart Search** - Find videos by name, game, or metadata
-- 📱 **Responsive UI** - Clean, modern interface
-- ⚡ **Fast Loading** - Optimized video streaming
-- 🖼️ **Thumbnail Generation** - Visual previews
-- 📊 **Metadata Extraction** - Automatic video analysis
-- 🗂️ **Folder Management** - Organize by game or custom folders
-- 🎬 **Video Player** - Built-in playback with controls
-- 🚀 **Multi-threaded Processing** - Lightning-fast indexing
+- Search functionality (by name, game, or metadata)
+- User interface with video player
+- Thumbnail generation
+- Automatic metadata extraction
+- Folder management
+- Video playback controls
 
-## 🤝 Contributing
+## Contributing
 
-We welcome contributions from the gaming community! Whether you're fixing bugs, adding features, or improving the UI - every contribution helps make ShadowCrawler better for gamers worldwide.
+Contributions are welcome. Please feel free to submit issues, feature requests, or pull requests.
 
-## 📄 License
+<!-- ## License
 
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-**Made with ❤️ for the gaming community** 🎮✨
+This project is open source and available under the [MIT License](LICENSE). -->
