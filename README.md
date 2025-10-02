@@ -10,7 +10,7 @@ Transform your chaotic ShadowPlay recordings into an organized, video library! S
 
 ## ✨ What is ShadowCrawler?
 
-The purpose of ShadowCrawler is to provide a better solution for people offloading their NVIDIA Shadowplay clips to external drives. As NVIDIA resets the default path and has reduced the viewability of said clips. I figured it would be better to build something that can index mounted drives and provide a simple interface for viewing videos.
+The purpose of ShadowCrawler is to provide a better solution for people offloading their NVIDIA Shadowplay clips to external drives. As NVIDIA resets the default path and has reduced the ease of viewing said clips. I figured it would be better to build something that can index mounted drives and provide a simple interface for viewing videos.
 
 ShadowCrawler automatically indexes and organizes your gaming videos, making it easy to:
 - 📁 **Organize** videos by game, date, or custom folders  
