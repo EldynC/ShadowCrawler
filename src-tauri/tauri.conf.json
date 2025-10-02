@@ -13,12 +13,22 @@
     "windows": [
       {
         "title": "shadowcrawler",
-        "width": 800,
-        "height": 600
+        "width": 1200,
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 600
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self' ipc: http://ipc.localhost; media-src 'self' asset: http://asset.localhost; img-src 'self' asset: http://asset.localhost blob: data:",
+      "assetProtocol": {
+        "enable": true,
+        "scope": [
+          "\\\\**",
+          "//**",
+          "Z:\\**"
+        ]
+      }
     }
   },
   "bundle": {
@@ -31,5 +41,16 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
+  },
+  "plugins": {
+    "fs": {
+      "requireLiteralLeadingDot": false
+    },
+    "shell": {
+      "open": true
+    },
+    "sql": {
+      "preload": []
+    }
   }
 }

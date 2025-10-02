@@ -70,7 +70,7 @@ class VideoPreloader {
 
   cleanup() {
     // Clean up all blob URLs to prevent memory leaks
-    for (const [videoId, blobUrl] of this.preloadedVideos) {
+    for (const [ blobUrl] of this.preloadedVideos) {
       URL.revokeObjectURL(blobUrl);
     }
     this.preloadedVideos.clear();

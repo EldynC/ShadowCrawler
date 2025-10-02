@@ -1,25 +1,31 @@
-import { invoke } from "@tauri-apps/api/core";
+// import { invoke } from "@tauri-apps/api/core";
 
 // import reactLogo from "./assets/react.svg";
 // import { invoke } from "@tauri-apps/api/core";
 import { useOnboardingStore } from "../utils/onboarding";
 import { open } from '@tauri-apps/plugin-dialog';
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-function Onboarding() {
 
+function Onboarding() {
   const {directoryPath, setDirectoryPath} = useOnboardingStore();
-  const [fileSelected, setFileSelected] = useState(false);
+  const [selectedPath, setSelectedPath] = useState<string>(directoryPath || "");
   const navigate = useNavigate();
+  
   useEffect(() => {
-        if(directoryPath) {
-            navigate("/viewer");
-        }
+    if(directoryPath) {
+      navigate("/viewer");
+    }
   }, [directoryPath]);
-//   async function greet() {
-//     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-//     setGreetMsg(await invoke("greet", { name }));
-//   }
+
+  const handleDirectorySelect = async () => {
+    const path = await open({ directory: true, recursive: true });
+    if (path) {
+      console.log("Selected path:", path);
+      setSelectedPath(path);
+      setDirectoryPath(path);
+    }
+  };
 
   return (
     <main className="container border-0 border-red-500 flex items-center justify-center min-h-screen gap-5">
@@ -28,20 +34,19 @@ function Onboarding() {
         className="row"
         onSubmit={async (e) => {
           e.preventDefault();
-          setDirectoryPath(await open({ directory: true }) || "");
+          await handleDirectorySelect();
         }}
       >
         <input
           id="greet-input"
           className="w-96"
-          value={directoryPath || "None"}
-          onChange={async (e) => setDirectoryPath(await open({ directory: true }) || "")}
-          placeholder="Enter your directory path..."
+          value={selectedPath}
+          readOnly
+          placeholder="Click 'Select Directory' to choose a folder..."
         />
         <button type="submit">Select Directory</button>
       </form>
       <button onClick={() => navigate("/viewer")}>Next</button> 
-
     </main>
   );
 }

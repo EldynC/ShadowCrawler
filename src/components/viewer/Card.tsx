@@ -1,7 +1,7 @@
-import { useState, useEffect, useMemo } from "react";
-import { invoke } from "@tauri-apps/api/core";
+import { useState, useEffect } from "react";
 import { VideoMetadata } from "../../types/video";
 import PlayerModal from "./PlayerModal";
+import { convertFileSrc } from '@tauri-apps/api/core';
 
 interface CardProps {
     video: VideoMetadata;
@@ -10,7 +10,8 @@ interface CardProps {
 export default function Card({ video }: CardProps) {
     const [thumbnailData, setThumbnailData] = useState<string | null>(null);
     const [showModal, setShowModal] = useState(false);  
-    console.log(video.full_path);
+    // console.log(video);
+    // console.log(video.full_path);
     useEffect(() => {
         if (video.thumbnail_path) {
             loadThumbnail();
@@ -19,12 +20,12 @@ export default function Card({ video }: CardProps) {
 
     const loadThumbnail = async () => {
         try {
-            const data = await invoke<number[]>("get_thumbnail_data", {
-                thumbnailPath: video.thumbnail_path
-            });
-            const blob = new Blob([new Uint8Array(data)], { type: 'image/jpeg' });
-            const url = URL.createObjectURL(blob);
-            setThumbnailData(url);
+            console.log(`Loading thumbnail: ${video.thumbnail_path}`);
+            
+            // Use the original path directly - no need for resolveResource
+            const assetUrl = convertFileSrc(video.thumbnail_path!);
+            console.log(`Asset URL: ${assetUrl}`);
+            setThumbnailData(assetUrl);
         } catch (error) {
             console.error("Failed to load thumbnail:", error);
         }
@@ -46,6 +47,7 @@ export default function Card({ video }: CardProps) {
 
     const formatDate = (timestamp: string) => {
         const date = new Date(parseInt(timestamp));
+        // console.log(date);
         return isNaN(date.getTime()) ? 'Unknown' : date.toLocaleDateString();
     };
 
@@ -78,6 +80,10 @@ export default function Card({ video }: CardProps) {
                 {video.fps && <p>FPS: {video.fps.toFixed(1)}</p>}
                 {video.codec && <p>Codec: {video.codec}</p>}
                 <p>Created: {formatDate(video.creation_date)}</p>
+                {/* <p>Thumbnail Path: {video.thumbnail_path}</p> */}
+                {/* <p className="text-xs text-gray-500 dark:text-gray-500 break-all">
+                    Path: {video.full_path}
+                </p> */}
             </div>
             {showModal && (
                 <PlayerModal 

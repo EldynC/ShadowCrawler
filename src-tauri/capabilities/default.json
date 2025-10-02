@@ -8,6 +8,45 @@
   "permissions": [
     "core:default",
     "opener:default",
-    "dialog:default"
+    "dialog:default",
+    "fs:default",
+    "fs:allow-read-file",
+    "fs:allow-read-dir",
+    "fs:allow-write-file",
+    "fs:allow-mkdir",
+    "shell:default",
+    "shell:allow-execute",
+    "shell:allow-spawn",
+    "sql:allow-load",
+    "sql:allow-select",
+    "sql:allow-execute",
+    {
+      "identifier": "fs:scope",
+      "allow": [
+        "$APPDATA/**",
+        "\\\\**",
+        "//**"
+      ]
+    },
+    {
+      "identifier": "shell:allow-execute",
+      "allow": [
+        {
+          "name": "ffprobe",
+          "cmd": "ffprobe",
+          "args": true
+        },
+        {
+          "name": "ffmpeg",
+          "cmd": "ffmpeg",
+          "args": true
+        },
+        {
+          "name": "stat",
+          "cmd": "stat",
+          "args": true
+        }
+      ]
+    }
   ]
 }

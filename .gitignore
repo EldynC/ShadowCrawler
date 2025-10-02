@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Rust build artifacts
+src-tauri/target/
+src-tauri/Cargo.lock
+
+# Node.js dependencies and lock files
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+dist-ssr/
+target/
+
+# Sample/test videos - these are large and not needed in public repo
+FakeVideos/

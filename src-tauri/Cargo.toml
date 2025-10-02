@@ -15,17 +15,17 @@ name = "shadowcrawler_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2", features = [] }
+tauri-build = { version = "2.0", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = [] }
-tauri-plugin-opener = "2"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-ffmpeg-next = "8.0.0"
-tauri-plugin-dialog = "2"
-walkdir = "2"  # Efficient directory walking
-tokio = { version = "1", features = ["full"] }  # Async runtime
-image = "0.24"  # For image processing
-chrono = { version = "0.4", features = ["serde"] }  # For date formatting
+tauri = { version = "2.0", features = ["protocol-asset"] }
+tauri-plugin-opener = "2.0"
+tauri-plugin-dialog = "2.0"
+tauri-plugin-fs = "2.0"
+tauri-plugin-shell = "2.0"
+tauri-plugin-sql = { version = "2", features = ["sqlite"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+walkdir = "2"
 

@@ -4,8 +4,8 @@ export interface VideoMetadata {
   full_path: string;
   file_name: string;
   file_size: number;
-  creation_date: string;
-  modified_date: string;
+  creation_date: number;
+  modified_date: number;
   duration?: number;
   width?: number;
   height?: number;

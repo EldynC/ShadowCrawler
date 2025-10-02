@@ -1,0 +1,10 @@
+{
+  "identifier": "fs-read-appdata",
+  "description": "Allows reading from the AppData directory",
+  "permissions": [
+    {
+      "identifier": "fs:allow-appdata-read-recursive",
+      "description": "Allows recursive read access to the AppData directory"
+    }
+  ]
+}
